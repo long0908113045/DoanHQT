@@ -1,14 +1,14 @@
 ﻿use QLBH1
 go
-create or alter procedure SPGetByIdNhaCungCap
+create or alter procedure SPDeleteNhaCungCap
 @MaNCC nvarchar(50)
 as
-if @MaNCC=''or @MaNCC is null
-THROW 50001, 'Ma nha cung cap Khong duoc de trong',1;
+If exists (select * from SanPham where MaNCC = @MaNCC)
+THROW 50001,'Nhan vien Con Hoa Don',1;
 begin
 delete NhaCungCap where MaNCC = @MaNCC
 end
 go
 
-Exec SPDeleteNhaCungCap'HN'
+Exec SPDeleteNhaCungCap null
 
