@@ -36,14 +36,14 @@
             this.quảnLýNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kHÁCHHÀNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.longToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nHÀCUNGCẤPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýNhàCungCấpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hÓAĐƠNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.longToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.quanLyDonHangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +55,8 @@
             this.nHÂNVIÊNToolStripMenuItem,
             this.kHÁCHHÀNGToolStripMenuItem,
             this.nHÀCUNGCẤPToolStripMenuItem,
-            this.hÓAĐƠNToolStripMenuItem});
+            this.hÓAĐƠNToolStripMenuItem,
+            this.quanLyDonHangToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
@@ -96,6 +97,7 @@
             this.nHÂNVIÊNToolStripMenuItem.Name = "nHÂNVIÊNToolStripMenuItem";
             this.nHÂNVIÊNToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
             this.nHÂNVIÊNToolStripMenuItem.Text = "NHÂN VIÊN";
+            this.nHÂNVIÊNToolStripMenuItem.Click += new System.EventHandler(this.nHÂNVIÊNToolStripMenuItem_Click);
             // 
             // quảnLýNhânViênToolStripMenuItem
             // 
@@ -109,6 +111,7 @@
             // 
             this.kHÁCHHÀNGToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quảnLýKháchHàngToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.longToolStripMenuItem});
             this.kHÁCHHÀNGToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.kHÁCHHÀNGToolStripMenuItem.Name = "kHÁCHHÀNGToolStripMenuItem";
@@ -122,6 +125,12 @@
             this.quảnLýKháchHàngToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
             this.quảnLýKháchHàngToolStripMenuItem.Text = "Quản Lý Khách Hàng";
             this.quảnLýKháchHàngToolStripMenuItem.Click += new System.EventHandler(this.quảnLýKháchHàngToolStripMenuItem_Click);
+            // 
+            // longToolStripMenuItem
+            // 
+            this.longToolStripMenuItem.Name = "longToolStripMenuItem";
+            this.longToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.longToolStripMenuItem.Text = "Quan Ly Don Hang";
             // 
             // nHÀCUNGCẤPToolStripMenuItem
             // 
@@ -169,35 +178,19 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "QUẢN LÝ CỬA HÀNG PHỤ KIỆN";
             // 
-            // label2
+            // toolStripMenuItem1
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(560, 389);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(435, 28);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "SINH VIÊN: NGUYỄN NGỌC QUỲNH";
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(228, 26);
+            this.toolStripMenuItem1.Text = "Quản Lý Don Hang";
             // 
-            // label3
+            // quanLyDonHangToolStripMenuItem
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Maroon;
-            this.label3.Location = new System.Drawing.Point(556, 341);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(439, 48);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "GVHD: TRƯƠNG VIỆT PHƯƠNG";
-            // 
-            // longToolStripMenuItem
-            // 
-            this.longToolStripMenuItem.Name = "longToolStripMenuItem";
-            this.longToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
-            this.longToolStripMenuItem.Text = "long";
+            this.quanLyDonHangToolStripMenuItem.Name = "quanLyDonHangToolStripMenuItem";
+            this.quanLyDonHangToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
+            this.quanLyDonHangToolStripMenuItem.Text = "Quan Ly Don Hang";
+            this.quanLyDonHangToolStripMenuItem.Click += new System.EventHandler(this.quanLyDonHangToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -205,12 +198,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Màn Hình Chính";
@@ -225,8 +216,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem sẢNPHẨMToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýSảnPhẩmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýLoạiSảnPhẩmToolStripMenuItem;
@@ -239,5 +228,7 @@
         private System.Windows.Forms.ToolStripMenuItem hÓAĐƠNToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýHóaĐơnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem longToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem quanLyDonHangToolStripMenuItem;
     }
 }

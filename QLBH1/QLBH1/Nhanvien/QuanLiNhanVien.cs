@@ -21,45 +21,45 @@ namespace QLBH1.Nhanvien
 
         private void buttonThem_Click(object sender, EventArgs e)
         {
-            Nhanvien nhanvien = new Nhanvien();
-            string manv = textBoxMaNV.Text;
-            string tennv = textBoxTenNV.Text;
-            DateTime ngaysinh = dateTimePickerNS.Value;
-            string sdt = textBoxSDT.Text;
-            string diachi = textBoxDiaChi.Text;
-            string gioitinh = "Nam";
-            if (radioButtonNu.Checked)
+            try
             {
-                gioitinh = "Nữ";
-            }
-
-            int born_year = dateTimePickerNS.Value.Year;
-            int this_year = DateTime.Now.Year;
-            if (((this_year - born_year) < 10) || ((this_year - born_year) > 100))
-            {
-                MessageBox.Show("Tuổi nhân viên trong khoảng 10 đến 100", "Ngày sinh không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else if (verif())
-            {
-                if (nhanvien.themNhanVien(manv, tennv, gioitinh, ngaysinh, diachi, sdt))
+                Nhanvien nhanvien = new Nhanvien();
+                string manv = textBoxMaNV.Text;
+                string tennv = textBoxTenNV.Text;
+                DateTime ngaysinh = dateTimePickerNS.Value;
+                string sdt = textBoxSDT.Text;
+                string diachi = textBoxDiaChi.Text;
+                string gioitinh = "Nam";
+                if (radioButtonNu.Checked)
                 {
-                    MessageBox.Show("Thêm nhân viên thành công", "Thêm nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Information);                    
-                    dataGridView1.ReadOnly = true;
-                    DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-                    //dataGridView1.RowTemplate.Height = 100;
-                    dataGridView1.DataSource = nhanvien.getNhanVien();
-                    dataGridView1.AllowUserToAddRows = false;
+                    gioitinh = "Nữ";
+                }             
+                if (verif())
+                {
+                    if (nhanvien.themNhanVien(manv, tennv, gioitinh, ngaysinh, diachi, sdt))
+                    {
+                        MessageBox.Show("Thêm nhân viên thành công", "Thêm nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dataGridView1.ReadOnly = true;
+                        DataGridViewImageColumn picCol = new DataGridViewImageColumn();
+                        //dataGridView1.RowTemplate.Height = 100;
+                        dataGridView1.DataSource = nhanvien.getNhanVien();
+                        dataGridView1.AllowUserToAddRows = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi", "Thêm nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi", "Thêm nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Thiếu giá trị", "Thêm nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
+             catch (SqlException ex)
             {
-                MessageBox.Show("Thiếu giá trị", "Thêm nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Lỗi SQL exception !\n" + ex.Message);
             }
+           
         }
         bool verif()
         {
@@ -79,26 +79,15 @@ namespace QLBH1.Nhanvien
         private void QuanLiNhanVien_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'qLBH1DataSet.NhanVien' table. You can move, or remove it, as needed.
-            this.nhanVienTableAdapter.Fill(this.qLBH1DataSet.NhanVien);
+            //this.nhanVienTableAdapter.Fill(this.qLBH1DataSet.NhanVien);
             Nhanvien nhanvien = new Nhanvien();
            // SqlCommand command = new SqlCommand("SELECT * FROM NhanVien");
 
-            dataGridView1.ReadOnly = true;
-            DataGridViewImageColumn picCol = new DataGridViewImageColumn();
+            dataGridView1.ReadOnly = true;           
             //dataGridView1.RowTemplate.Height = 100;
             dataGridView1.DataSource = nhanvien.getNhanVien();
             dataGridView1.AllowUserToAddRows = false;
-
-            string mainconn = ConfigurationManager.ConnectionStrings["QLBH1.Properties.Settings.QLBH1ConnectionString"].ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(mainconn);
-            string sqlquery = "Select * from [dbo].[NhanVien]";
-            sqlconn.Open();
-            SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
-            SqlDataAdapter dr = new SqlDataAdapter(sqlcom);
-            DataTable dt = new DataTable();
-            dr.Fill(dt);
-            dataGridView1.DataSource = dt;
-            sqlconn.Close();
+            
 
         }
 
@@ -133,9 +122,9 @@ namespace QLBH1.Nhanvien
                     }
                 }
             }
-            catch
+            catch (SqlException ex)
             {
-                MessageBox.Show("Chọn nhân viên muốn xóa", "Xóa nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lỗi SQL exception !\n" + ex.Message);
             }
         }
 
@@ -152,14 +141,7 @@ namespace QLBH1.Nhanvien
             {
                 gioitinh = "Nữ";
             }
-            int born_year = dateTimePickerNS.Value.Year;
-            int this_year = DateTime.Now.Year;
-            if (((this_year - born_year) < 10) || ((this_year - born_year) > 100))
-            {
-                MessageBox.Show("Tuổi nhân viên trong khoảng từ 10 đến 100", "Ngày sinh không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else if (verif())
+            if (verif())
             {
                 try
                 {

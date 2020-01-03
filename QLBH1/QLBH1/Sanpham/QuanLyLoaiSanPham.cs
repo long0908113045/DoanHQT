@@ -21,25 +21,34 @@ namespace QLBH1.Sanpham
 
         private void buttonThemLSP_Click(object sender, EventArgs e)
         {
-            Loaisanpham loaisanpham = new Loaisanpham();
-            string malsp = textBoxMaLSP.Text;
-            string tenlsp = textBoxTenLSP.Text;
+            
             if (verif())
             {
-                if (loaisanpham.themLoaiSanPham(malsp, tenlsp))
+                Loaisanpham loaisanpham = new Loaisanpham();
+                string malsp = textBoxMaLSP.Text;
+                string tenlsp = textBoxTenLSP.Text; 
+                try
                 {
-                    MessageBox.Show("Thêm loại sản phẩm thành công", "Thêm loại sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //SqlCommand command = new SqlCommand("SELECT * FROM LoaiSanPham");
-                    dataGridViewLSP.ReadOnly = true;
-                    DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-                    //dataGridViewLSP.RowTemplate.Height = 100;
-                    dataGridViewLSP.DataSource = loaisanpham.getLoaiSanPham();
-                    dataGridViewLSP.AllowUserToAddRows = false;
+                    if (loaisanpham.themLoaiSanPham(malsp, tenlsp))
+                    {
+                        MessageBox.Show("Thêm loại sản phẩm thành công", "Thêm loại sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //SqlCommand command = new SqlCommand("SELECT * FROM LoaiSanPham");
+                        dataGridViewLSP.ReadOnly = true;
+                        DataGridViewImageColumn picCol = new DataGridViewImageColumn();
+                        //dataGridViewLSP.RowTemplate.Height = 100;
+                        dataGridViewLSP.DataSource = loaisanpham.getLoaiSanPham();
+                        dataGridViewLSP.AllowUserToAddRows = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi", "Thêm loại sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Lỗi", "Thêm loại sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi SQL exception !/n" + ex.Message);
                 }
+               
             }
             else
             {
@@ -62,7 +71,7 @@ namespace QLBH1.Sanpham
         private void QuanLyLoaiSanPham_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'qLBH1DataSet.LoaiSanPham' table. You can move, or remove it, as needed.
-            this.loaiSanPhamTableAdapter.Fill(this.qLBH1DataSet.LoaiSanPham);
+            //this.loaiSanPhamTableAdapter.Fill(this.qLBH1DataSet.LoaiSanPham);
             Loaisanpham loaisanpham = new Loaisanpham();
             //SqlCommand command = new SqlCommand("SELECT * FROM LoaiSanPham");
 
@@ -72,16 +81,16 @@ namespace QLBH1.Sanpham
             dataGridViewLSP.DataSource = loaisanpham.getLoaiSanPham();
             dataGridViewLSP.AllowUserToAddRows = false;
 
-            string mainconn = ConfigurationManager.ConnectionStrings["QLBH1.Properties.Settings.QLBH1ConnectionString"].ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(mainconn);
-            string sqlquery = "Select * from [dbo].[LoaiSanPham]";
-            sqlconn.Open();
-            SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
-            SqlDataAdapter dr = new SqlDataAdapter(sqlcom);
-            DataTable dt = new DataTable();
-            dr.Fill(dt);
-            dataGridViewLSP.DataSource = dt;
-            sqlconn.Close();
+            //string mainconn = ConfigurationManager.ConnectionStrings["QLBH1.Properties.Settings.QLBH1ConnectionString"].ConnectionString;
+            //SqlConnection sqlconn = new SqlConnection(mainconn);
+            //string sqlquery = "Select * from [dbo].[LoaiSanPham]";
+            //sqlconn.Open();
+            //SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
+            //SqlDataAdapter dr = new SqlDataAdapter(sqlcom);
+            //DataTable dt = new DataTable();
+            //dr.Fill(dt);
+            //dataGridViewLSP.DataSource = dt;
+            //sqlconn.Close();
         }
        
         private void buttonXoaLSP_Click(object sender, EventArgs e)
@@ -110,9 +119,9 @@ namespace QLBH1.Sanpham
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Chọn loại sản phẩm muốn xóa", "Xóa loại sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Xoá sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

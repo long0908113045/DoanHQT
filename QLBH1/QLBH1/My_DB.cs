@@ -10,7 +10,7 @@ namespace QLBH1
 {
     class My_DB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=QLBH1;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(local);Initial Catalog=QLBH1;Integrated Security=False; User ID="+Globals.GlobalUserId+ ";Password="+Globals.GlobalPass);
         public SqlConnection getConnection
         {
             get

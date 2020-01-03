@@ -30,19 +30,16 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxMaHD = new System.Windows.Forms.TextBox();
-            this.textBoxNgayLap = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxTongTien = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxTrangThai = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.buttonThemHD = new System.Windows.Forms.Button();
             this.buttonHuyHD = new System.Windows.Forms.Button();
             this.buttonLuuHD = new System.Windows.Forms.Button();
             this.dataGridViewHD = new System.Windows.Forms.DataGridView();
-            this.comboBoxMaNV = new System.Windows.Forms.ComboBox();
             this.comboBoxMaKH = new System.Windows.Forms.ComboBox();
             this.comboBoxMaSP = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,9 +49,11 @@
             this.textBoxSoLuong = new System.Windows.Forms.TextBox();
             this.textBoxThanhTien = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ThemChiTiet = new System.Windows.Forms.Button();
+            this.XoaChiTiet = new System.Windows.Forms.Button();
             this.dataGridViewCTHD = new System.Windows.Forms.DataGridView();
+            this.LabelMaNV = new System.Windows.Forms.Label();
+            this.dateTimePickerNgayLap = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCTHD)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 41);
+            this.label1.Location = new System.Drawing.Point(17, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 17);
@@ -72,23 +71,15 @@
             // textBoxMaHD
             // 
             this.textBoxMaHD.Location = new System.Drawing.Point(135, 37);
-            this.textBoxMaHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxMaHD.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMaHD.Name = "textBoxMaHD";
             this.textBoxMaHD.Size = new System.Drawing.Size(132, 22);
             this.textBoxMaHD.TabIndex = 1;
             // 
-            // textBoxNgayLap
-            // 
-            this.textBoxNgayLap.Location = new System.Drawing.Point(135, 82);
-            this.textBoxNgayLap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBoxNgayLap.Name = "textBoxNgayLap";
-            this.textBoxNgayLap.Size = new System.Drawing.Size(132, 22);
-            this.textBoxNgayLap.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 86);
+            this.label2.Location = new System.Drawing.Point(37, 86);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 17);
@@ -98,7 +89,7 @@
             // textBoxTongTien
             // 
             this.textBoxTongTien.Location = new System.Drawing.Point(135, 128);
-            this.textBoxTongTien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTongTien.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTongTien.Name = "textBoxTongTien";
             this.textBoxTongTien.Size = new System.Drawing.Size(132, 22);
             this.textBoxTongTien.TabIndex = 5;
@@ -106,7 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 132);
+            this.label3.Location = new System.Drawing.Point(33, 132);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 17);
@@ -115,8 +106,8 @@
             // 
             // textBoxTrangThai
             // 
-            this.textBoxTrangThai.Location = new System.Drawing.Point(455, 128);
-            this.textBoxTrangThai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTrangThai.Location = new System.Drawing.Point(441, 87);
+            this.textBoxTrangThai.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTrangThai.Name = "textBoxTrangThai";
             this.textBoxTrangThai.Size = new System.Drawing.Size(160, 22);
             this.textBoxTrangThai.TabIndex = 11;
@@ -124,7 +115,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(325, 132);
+            this.label4.Location = new System.Drawing.Point(319, 85);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 17);
@@ -134,27 +125,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(315, 86);
+            this.label5.Location = new System.Drawing.Point(309, 39);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "Khách Hàng:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(328, 41);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 17);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Nhân Viên:";
-            // 
             // buttonThemHD
             // 
             this.buttonThemHD.Location = new System.Drawing.Point(51, 186);
-            this.buttonThemHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonThemHD.Margin = new System.Windows.Forms.Padding(4);
             this.buttonThemHD.Name = "buttonThemHD";
             this.buttonThemHD.Size = new System.Drawing.Size(149, 36);
             this.buttonThemHD.TabIndex = 12;
@@ -165,7 +146,7 @@
             // buttonHuyHD
             // 
             this.buttonHuyHD.Location = new System.Drawing.Point(236, 186);
-            this.buttonHuyHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonHuyHD.Margin = new System.Windows.Forms.Padding(4);
             this.buttonHuyHD.Name = "buttonHuyHD";
             this.buttonHuyHD.Size = new System.Drawing.Size(149, 36);
             this.buttonHuyHD.TabIndex = 13;
@@ -176,7 +157,7 @@
             // buttonLuuHD
             // 
             this.buttonLuuHD.Location = new System.Drawing.Point(432, 186);
-            this.buttonLuuHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLuuHD.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLuuHD.Name = "buttonLuuHD";
             this.buttonLuuHD.Size = new System.Drawing.Size(149, 36);
             this.buttonLuuHD.TabIndex = 14;
@@ -188,26 +169,18 @@
             // 
             this.dataGridViewHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewHD.Location = new System.Drawing.Point(28, 244);
-            this.dataGridViewHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewHD.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewHD.Name = "dataGridViewHD";
             this.dataGridViewHD.RowHeadersWidth = 51;
             this.dataGridViewHD.Size = new System.Drawing.Size(588, 295);
             this.dataGridViewHD.TabIndex = 15;
-            // 
-            // comboBoxMaNV
-            // 
-            this.comboBoxMaNV.FormattingEnabled = true;
-            this.comboBoxMaNV.Location = new System.Drawing.Point(455, 37);
-            this.comboBoxMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.comboBoxMaNV.Name = "comboBoxMaNV";
-            this.comboBoxMaNV.Size = new System.Drawing.Size(160, 24);
-            this.comboBoxMaNV.TabIndex = 16;
+            this.dataGridViewHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHD_CellClick);
             // 
             // comboBoxMaKH
             // 
             this.comboBoxMaKH.FormattingEnabled = true;
-            this.comboBoxMaKH.Location = new System.Drawing.Point(455, 82);
-            this.comboBoxMaKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxMaKH.Location = new System.Drawing.Point(441, 41);
+            this.comboBoxMaKH.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxMaKH.Name = "comboBoxMaKH";
             this.comboBoxMaKH.Size = new System.Drawing.Size(160, 24);
             this.comboBoxMaKH.TabIndex = 17;
@@ -216,10 +189,11 @@
             // 
             this.comboBoxMaSP.FormattingEnabled = true;
             this.comboBoxMaSP.Location = new System.Drawing.Point(784, 37);
-            this.comboBoxMaSP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxMaSP.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxMaSP.Name = "comboBoxMaSP";
             this.comboBoxMaSP.Size = new System.Drawing.Size(292, 24);
             this.comboBoxMaSP.TabIndex = 19;
+            this.comboBoxMaSP.TextChanged += new System.EventHandler(this.comboBoxMaSP_TextChanged);
             // 
             // label7
             // 
@@ -234,7 +208,7 @@
             // textBoxDonGia
             // 
             this.textBoxDonGia.Location = new System.Drawing.Point(784, 82);
-            this.textBoxDonGia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxDonGia.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDonGia.Name = "textBoxDonGia";
             this.textBoxDonGia.Size = new System.Drawing.Size(96, 22);
             this.textBoxDonGia.TabIndex = 21;
@@ -262,7 +236,7 @@
             // textBoxSoLuong
             // 
             this.textBoxSoLuong.Location = new System.Drawing.Point(979, 82);
-            this.textBoxSoLuong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSoLuong.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSoLuong.Name = "textBoxSoLuong";
             this.textBoxSoLuong.Size = new System.Drawing.Size(97, 22);
             this.textBoxSoLuong.TabIndex = 23;
@@ -270,7 +244,7 @@
             // textBoxThanhTien
             // 
             this.textBoxThanhTien.Location = new System.Drawing.Point(784, 132);
-            this.textBoxThanhTien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxThanhTien.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxThanhTien.Name = "textBoxThanhTien";
             this.textBoxThanhTien.Size = new System.Drawing.Size(185, 22);
             this.textBoxThanhTien.TabIndex = 25;
@@ -285,44 +259,68 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "Thành Tiền:";
             // 
-            // button1
+            // ThemChiTiet
             // 
-            this.button1.Location = new System.Drawing.Point(784, 186);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 36);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Thêm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ThemChiTiet.Location = new System.Drawing.Point(784, 186);
+            this.ThemChiTiet.Margin = new System.Windows.Forms.Padding(4);
+            this.ThemChiTiet.Name = "ThemChiTiet";
+            this.ThemChiTiet.Size = new System.Drawing.Size(105, 36);
+            this.ThemChiTiet.TabIndex = 26;
+            this.ThemChiTiet.Text = "Thêm";
+            this.ThemChiTiet.UseVisualStyleBackColor = true;
+            this.ThemChiTiet.Click += new System.EventHandler(this.ThemChiTiet_Click);
             // 
-            // button2
+            // XoaChiTiet
             // 
-            this.button2.Location = new System.Drawing.Point(925, 186);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 36);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = true;
+            this.XoaChiTiet.Location = new System.Drawing.Point(925, 186);
+            this.XoaChiTiet.Margin = new System.Windows.Forms.Padding(4);
+            this.XoaChiTiet.Name = "XoaChiTiet";
+            this.XoaChiTiet.Size = new System.Drawing.Size(105, 36);
+            this.XoaChiTiet.TabIndex = 27;
+            this.XoaChiTiet.Text = "Xóa";
+            this.XoaChiTiet.UseVisualStyleBackColor = true;
+            this.XoaChiTiet.Click += new System.EventHandler(this.XoaChiTiet_Click);
             // 
             // dataGridViewCTHD
             // 
             this.dataGridViewCTHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCTHD.Location = new System.Drawing.Point(693, 244);
-            this.dataGridViewCTHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewCTHD.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewCTHD.Name = "dataGridViewCTHD";
             this.dataGridViewCTHD.RowHeadersWidth = 51;
             this.dataGridViewCTHD.Size = new System.Drawing.Size(384, 295);
             this.dataGridViewCTHD.TabIndex = 28;
+            this.dataGridViewCTHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCTHD_CellClick);
+            // 
+            // LabelMaNV
+            // 
+            this.LabelMaNV.AutoSize = true;
+            this.LabelMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelMaNV.ForeColor = System.Drawing.Color.Red;
+            this.LabelMaNV.Location = new System.Drawing.Point(417, 137);
+            this.LabelMaNV.Name = "LabelMaNV";
+            this.LabelMaNV.Size = new System.Drawing.Size(93, 32);
+            this.LabelMaNV.TabIndex = 29;
+            this.LabelMaNV.Text = "label6";
+            // 
+            // dateTimePickerNgayLap
+            // 
+            this.dateTimePickerNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerNgayLap.Location = new System.Drawing.Point(135, 80);
+            this.dateTimePickerNgayLap.Name = "dateTimePickerNgayLap";
+            this.dateTimePickerNgayLap.Size = new System.Drawing.Size(132, 22);
+            this.dateTimePickerNgayLap.TabIndex = 30;
             // 
             // FormHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1129, 554);
+            this.Controls.Add(this.dateTimePickerNgayLap);
+            this.Controls.Add(this.LabelMaNV);
             this.Controls.Add(this.dataGridViewCTHD);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.XoaChiTiet);
+            this.Controls.Add(this.ThemChiTiet);
             this.Controls.Add(this.textBoxThanhTien);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxSoLuong);
@@ -332,7 +330,6 @@
             this.Controls.Add(this.comboBoxMaSP);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxMaKH);
-            this.Controls.Add(this.comboBoxMaNV);
             this.Controls.Add(this.dataGridViewHD);
             this.Controls.Add(this.buttonLuuHD);
             this.Controls.Add(this.buttonHuyHD);
@@ -340,14 +337,12 @@
             this.Controls.Add(this.textBoxTrangThai);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxTongTien);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBoxNgayLap);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxMaHD);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormHoaDon";
             this.Text = "FormHoaDon";
             this.Load += new System.EventHandler(this.FormHoaDon_Load);
@@ -362,19 +357,16 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxMaHD;
-        private System.Windows.Forms.TextBox textBoxNgayLap;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxTongTien;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxTrangThai;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonThemHD;
         private System.Windows.Forms.Button buttonHuyHD;
         private System.Windows.Forms.Button buttonLuuHD;
         private System.Windows.Forms.DataGridView dataGridViewHD;
-        private System.Windows.Forms.ComboBox comboBoxMaNV;
         private System.Windows.Forms.ComboBox comboBoxMaKH;
         private System.Windows.Forms.ComboBox comboBoxMaSP;
         private System.Windows.Forms.Label label7;
@@ -384,8 +376,10 @@
         private System.Windows.Forms.TextBox textBoxSoLuong;
         private System.Windows.Forms.TextBox textBoxThanhTien;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ThemChiTiet;
+        private System.Windows.Forms.Button XoaChiTiet;
         private System.Windows.Forms.DataGridView dataGridViewCTHD;
+        private System.Windows.Forms.Label LabelMaNV;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgayLap;
     }
 }

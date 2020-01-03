@@ -45,6 +45,16 @@ namespace QLBH1.Sanpham
             adapter.Fill(table);
             return table;
         }
+        public DataTable getByIdSanPham(string MaSP)
+        {
+            SqlCommand command = new SqlCommand("SPGetByIdSanPham", mydb.getConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@MaSP", MaSP));
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
         public bool xoaSanPham(string MaSP)
         {
             SqlCommand command = new SqlCommand("SPDeleteSanPham", mydb.getConnection);
@@ -62,7 +72,7 @@ namespace QLBH1.Sanpham
                 return false;
             }
         }
-        public bool capnhatSanPham(string MaSP, string TenSP, string DVTinh, int DonGia, int MaLSP, string SoLuong, string MaNCC)
+        public bool capnhatSanPham(string MaSP, string TenSP, string DVTinh, int DonGia, int SoLuong, string MaLSP, string MaNCC)
         {
             SqlCommand command = new SqlCommand("SPUpdateSanPham", mydb.getConnection);
             command.CommandType = CommandType.StoredProcedure;

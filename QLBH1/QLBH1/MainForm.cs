@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,20 +20,58 @@ namespace QLBH1
 
         private void quảnLýSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             Sanpham.QuanLySanPham sp = new Sanpham.QuanLySanPham();            
             sp.ShowDialog();
         }
 
         private void quảnLýLoạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Sanpham.QuanLyLoaiSanPham lsp = new Sanpham.QuanLyLoaiSanPham();
-            lsp.ShowDialog();
+            string con = "Data Source=(local);Initial Catalog=QLBH1;Integrated Security=False; User ID=" + Globals.GlobalUserId + ";Password=" + Globals.GlobalPass;
+            string queryString = "SELECT * FROM LoaiSanPham";
+            StringBuilder errorMessages = new StringBuilder();
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+
+                    Sanpham.QuanLyLoaiSanPham sp = new Sanpham.QuanLyLoaiSanPham();
+                    sp.ShowDialog();
+                    this.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void quảnLýNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Nhanvien.QuanLiNhanVien nv = new Nhanvien.QuanLiNhanVien();
-            nv.ShowDialog();
+            string con = "Data Source=(local);Initial Catalog=QLBH1;Integrated Security=False; User ID=" + Globals.GlobalUserId + ";Password=" + Globals.GlobalPass;
+            string queryString = "SELECT * FROM NhanVien";
+            StringBuilder errorMessages = new StringBuilder();
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+
+                    Nhanvien.QuanLiNhanVien nv = new Nhanvien.QuanLiNhanVien();
+                    nv.ShowDialog();                   
+                    this.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
         }
 
         private void quảnLýKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,8 +88,19 @@ namespace QLBH1
 
         private void quảnLýHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hoadon.QuanLyHoaDon hd = new Hoadon.QuanLyHoaDon();
+            HoaDon1.FormHoaDon hd = new HoaDon1.FormHoaDon();
             hd.ShowDialog();
+        }
+
+        private void nHÂNVIÊNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quanLyDonHangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyDonHang ql = new QuanLyDonHang();
+            ql.ShowDialog();
         }
     }
 }

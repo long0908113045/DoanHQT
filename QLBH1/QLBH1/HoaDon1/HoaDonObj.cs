@@ -1,55 +1,132 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace QLBH1.HoaDon1
 {
-    class HoaDonObj
+    public class HoaDonObj
     {
-        string mahd, tinhtrang, manv, makh;
-        DateTime ngaylap;
-        int tongtien;
-        public string MaHD
+        private string MaHD;
+        private DateTime NgayLap;
+        private int TongTien;
+        private string TinhTrang;
+        private string MaNV;
+        private string MaKH;
+        public string mahd
         {
-            get { return mahd; }
-            set { mahd = value; }
+            get { return MaHD; }
+            set { MaHD = value; }
         }
-        public DateTime NgayLap
+        public DateTime Ngaylap
         {
-            get { return ngaylap; }
-            set { ngaylap = value; }
+            get { return NgayLap; }
+            set { NgayLap = value; }
         }
-        public int TongTien
+        public int Tongtien
         {
-            get { return tongtien; }
-            set { tongtien = value; }
+            get { return TongTien; }
+            set { TongTien = value; }
         }
-        public string TinhTrang
+        public string Tinhtrang
         {
-            get { return tinhtrang; }
-            set { tinhtrang = value; }
+            get { return TinhTrang; }
+            set { TinhTrang = value; }
         }
-        public string MaNV
+        public string maNV
         {
-            get { return manv; }
-            set { manv = value; }
+            get { return MaNV; }
+            set { MaNV = value; }
         }
-        public string MaKH
+        public string maKH
         {
-            get { return makh; }
-            set { makh = value; }
+            get { return MaKH; }
+            set { MaKH = value; }
         }
-        public HoaDonObj() {}
-        public HoaDonObj(string mahd, DateTime ngaylap, int tongtien, string tinhtrang, string manv, string makh)
+        public HoaDonObj() { }
+        public HoaDonObj(string MaHD, DateTime NgayLap, int TongTien, string TinhTrang, string MaNV, string MaKH)
         {
             this.mahd = mahd;
-            this.ngaylap = ngaylap;
-            this.tongtien = tongtien;
-            this.tinhtrang = tinhtrang;
-            this.manv = manv;
-            this.makh = makh;
+            this.NgayLap = NgayLap;
+            this.TongTien = TongTien;
+            this.TinhTrang = TinhTrang;
+            this.MaNV = MaNV;
+            this.MaKH = MaKH;
+        }
+        My_DB mydb = new My_DB();
+        public bool themHoaDon(string MaHD, DateTime NgayLap, int TongTien, string TinhTrang, string MaNV, string MaKH)
+        {
+
+            SqlCommand command = new SqlCommand("SPInsertHoaDon", mydb.getConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@MaHD", MaHD));
+            command.Parameters.Add(new SqlParameter("@NgayLap", NgayLap));
+            command.Parameters.Add(new SqlParameter("@TongTien", TongTien));
+            command.Parameters.Add(new SqlParameter("@TinhTrang", TinhTrang));
+            command.Parameters.Add(new SqlParameter("@MaNV", MaNV));
+            command.Parameters.Add(new SqlParameter("@MaKH", MaKH));
+            mydb.openConnection();
+            if ((command.ExecuteNonQuery() == 1))
+            {
+                mydb.closeConnection();
+                return true;
+            }
+            else
+            {
+                mydb.closeConnection();
+                return false;
+            }
+        }
+        public DataTable getHoaDon()
+        {
+            SqlCommand command = new SqlCommand("SPGetAllHoaDon", mydb.getConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+        public bool xoaHoaDon(string MaHD)
+        {
+            SqlCommand command = new SqlCommand("SPDeleteHoaDon", mydb.getConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@MaHD", MaHD));
+            mydb.openConnection();
+            if ((command.ExecuteNonQuery() == 1))
+            {
+                mydb.closeConnection();
+                return true;
+            }
+            else
+            {
+                mydb.closeConnection();
+                return false;
+            }
+        }
+        public bool capnhatHoaDon(string MaHD, DateTime NgayLap, int TongTien, string TinhTrang, string MaNV, string MaKH)
+        {
+            SqlCommand command = new SqlCommand("SPUpdateHoaDon", mydb.getConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@MaHD", MaHD));
+            command.Parameters.Add(new SqlParameter("@NgayLap", NgayLap));
+            command.Parameters.Add(new SqlParameter("@TongTien", TongTien));
+            command.Parameters.Add(new SqlParameter("@TinhTrang", TinhTrang));
+            command.Parameters.Add(new SqlParameter("@MaNV", MaNV));
+            command.Parameters.Add(new SqlParameter("@MaKH", MaKH));
+            mydb.openConnection();
+            if ((command.ExecuteNonQuery() == 1))
+            {
+                mydb.closeConnection();
+                return true;
+            }
+            else
+            {
+                mydb.closeConnection();
+                return false;
+            }
         }
     }
 }

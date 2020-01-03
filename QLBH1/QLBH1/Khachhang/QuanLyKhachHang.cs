@@ -28,20 +28,27 @@ namespace QLBH1.Khachhang
             string sdt = textBoxSDT.Text;            
             if (verif())
             {
-                if (khachhang.themKhachHang(makh, tenkh, diachi, sdt))
-                {
-                    MessageBox.Show("Thêm khách hàng thành công", "Thêm khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //SqlCommand command = new SqlCommand("SELECT * FROM KhachHang");
-                    dataGridViewKH.ReadOnly = true;
-                    DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-                    //dataGridViewKH.RowTemplate.Height = 100;
-                    dataGridViewKH.DataSource = khachhang.getKhachHang();
-                    dataGridViewKH.AllowUserToAddRows = false;
+                try {
+                    if (khachhang.themKhachHang(makh, tenkh, diachi, sdt))
+                    {
+                        MessageBox.Show("Thêm khách hàng thành công", "Thêm khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //SqlCommand command = new SqlCommand("SELECT * FROM KhachHang");
+                        dataGridViewKH.ReadOnly = true;
+                        DataGridViewImageColumn picCol = new DataGridViewImageColumn();
+                        //dataGridViewKH.RowTemplate.Height = 100;
+                        dataGridViewKH.DataSource = khachhang.getKhachHang();
+                        dataGridViewKH.AllowUserToAddRows = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi", "Thêm khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
+                catch(SqlException ex)
                 {
-                    MessageBox.Show("Lỗi", "Thêm khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
                 }
+               
             }
             else
             {
@@ -67,7 +74,7 @@ namespace QLBH1.Khachhang
         private void QuanLyKhachHang_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'qLBH1DataSet.KhachHang' table. You can move, or remove it, as needed.
-            this.khachHangTableAdapter.Fill(this.qLBH1DataSet.KhachHang);
+            //this.khachHangTableAdapter.Fill(this.qLBH1DataSet.KhachHang);
             Khachhang khachhang = new Khachhang();
             //SqlCommand command = new SqlCommand("SELECT * FROM KhachHang");
 
@@ -77,19 +84,19 @@ namespace QLBH1.Khachhang
             dataGridViewKH.DataSource = khachhang.getKhachHang();
             dataGridViewKH.AllowUserToAddRows = false;
 
-            string mainconn = ConfigurationManager.ConnectionStrings["QLBH1.Properties.Settings.QLBH1ConnectionString"].ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(mainconn);
-            string sqlquery = "Select * from [dbo].[KhachHang]";
-            sqlconn.Open();
-            SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
-            SqlDataAdapter dr = new SqlDataAdapter(sqlcom);
-            DataTable dt = new DataTable();
-            dr.Fill(dt);
-            dataGridViewKH.DataSource = dt;
-            sqlconn.Close();
+            //string mainconn = ConfigurationManager.ConnectionStrings["QLBH1.Properties.Settings.QLBH1ConnectionString"].ConnectionString;
+            //SqlConnection sqlconn = new SqlConnection(mainconn);
+            //string sqlquery = "Select * from [dbo].[KhachHang]";
+            //sqlconn.Open();
+            //SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
+            //SqlDataAdapter dr = new SqlDataAdapter(sqlcom);
+            //DataTable dt = new DataTable();
+            //dr.Fill(dt);
+            //dataGridViewKH.DataSource = dt;
+            //sqlconn.Close();
         }
 
-       
+
 
         private void buttonXoaKH_Click(object sender, EventArgs e)
         {
@@ -99,24 +106,31 @@ namespace QLBH1.Khachhang
                 string makh = textBoxMaKH.Text;
                 if ((MessageBox.Show("Bạn thực sự muốn xóa khách hàng này?", "Xóa khách hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    if (khachhang.xoaKhachHang(makh))
-                    {
-                        MessageBox.Show("Xóa khách hàng thành công", "Xóa khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        textBoxMaKH.Text = "";
-                        textBoxTenKH.Text = "";                       
-                        textBoxDiaChi.Text = "";
-                        textBoxSDT.Text = "";
-                        //SqlCommand command = new SqlCommand("SELECT * FROM KhachHang");
-                        dataGridViewKH.ReadOnly = true;
-                        DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-                        //dataGridViewKH.RowTemplate.Height = 100;
-                        dataGridViewKH.DataSource = khachhang.getKhachHang();
-                        dataGridViewKH.AllowUserToAddRows = false;
+                    try{
+                        if (khachhang.xoaKhachHang(makh))
+                        {
+                            MessageBox.Show("Xóa khách hàng thành công", "Xóa khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            textBoxMaKH.Text = "";
+                            textBoxTenKH.Text = "";
+                            textBoxDiaChi.Text = "";
+                            textBoxSDT.Text = "";
+                            //SqlCommand command = new SqlCommand("SELECT * FROM KhachHang");
+                            dataGridViewKH.ReadOnly = true;
+                            DataGridViewImageColumn picCol = new DataGridViewImageColumn();
+                            //dataGridViewKH.RowTemplate.Height = 100;
+                            dataGridViewKH.DataSource = khachhang.getKhachHang();
+                            dataGridViewKH.AllowUserToAddRows = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa khách hàng thất bại", "Xóa khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                    else
+                    catch(SqlException ex)
                     {
-                        MessageBox.Show("Xóa khách hàng thất bại", "Xóa khách hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Loi Sqlexcption" + ex.Message);
                     }
+                    
                 }
             }
             catch
@@ -174,6 +188,7 @@ namespace QLBH1.Khachhang
             //sqlconn.Open();
             //SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
             My_DB mydb = new My_DB();
+                       
             SqlCommand sqlcom = new SqlCommand("SPGetByNameKhachHang", mydb.getConnection);
             sqlcom.CommandType = CommandType.StoredProcedure;
             sqlcom.Parameters.Add(new SqlParameter("@TenKH", textBoxTimKH.Text));

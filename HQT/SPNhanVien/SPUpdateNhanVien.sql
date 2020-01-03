@@ -14,7 +14,7 @@ if @TenNV=''or @TenNV is null
 THROW 50001, 'Ten Nhan Vien Khong duoc de trong',1;
 if @GioiTinh=''or @GioiTinh is null
 THROW 50001, 'Gioi Tinh cap Khong duoc de trong',1;
-IF @NgaySinh IS NULL OR @NgaySinh >= GETDATE()
+IF @NgaySinh IS NULL or DATEDIFF(YYYY,@NgaySinh,GETDATE())<18
 THROW 50001,'Ngày Sinh Không Được Lớn Hơn Ngày Hiện Tại!',1; 
 if @DiaChi=''or @DiaChi is null
 THROW 50001, 'Dia Chi Nhan Vien Khong duoc de trong',1;

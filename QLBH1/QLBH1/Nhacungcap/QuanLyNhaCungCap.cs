@@ -21,34 +21,42 @@ namespace QLBH1.Nhacungcap
 
         private void buttonThemNCC_Click(object sender, EventArgs e)
         {
-            Nhacungcap nhacungcap = new Nhacungcap();
-            string mancc = textBoxMaNCC.Text;
-            string tenncc = textBoxTenNCC.Text;
-            string diachi = textBoxDiaChi.Text;
-            string sdt = textBoxSDT.Text;
-            string email = textBoxEmail.Text;
-            string website = textBoxWebsite.Text;            
-            if (verif())
+            try
             {
-                if (nhacungcap.themNhaCungCap(mancc, tenncc, diachi, sdt, email, website))
+                Nhacungcap nhacungcap = new Nhacungcap();
+                string mancc = textBoxMaNCC.Text;
+                string tenncc = textBoxTenNCC.Text;
+                string diachi = textBoxDiaChi.Text;
+                string sdt = textBoxSDT.Text;
+                string email = textBoxEmail.Text;
+                string website = textBoxWebsite.Text;
+                if (verif())
                 {
-                    MessageBox.Show("Thêm nhà cung cấp thành công", "Thêm nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //SqlCommand command = new SqlCommand("SELECT * FROM NhaCungCap");
-                    dataGridViewNCC.ReadOnly = true;
-                    DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-                    //dataGridViewNCC.RowTemplate.Height = 100;
-                    dataGridViewNCC.DataSource = nhacungcap.getNhaCungCap();
-                    dataGridViewNCC.AllowUserToAddRows = false;
+                    if (nhacungcap.themNhaCungCap(mancc, tenncc, diachi, sdt, email, website))
+                    {
+                        MessageBox.Show("Thêm nhà cung cấp thành công", "Thêm nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //SqlCommand command = new SqlCommand("SELECT * FROM NhaCungCap");
+                        dataGridViewNCC.ReadOnly = true;
+                        DataGridViewImageColumn picCol = new DataGridViewImageColumn();
+                        //dataGridViewNCC.RowTemplate.Height = 100;
+                        dataGridViewNCC.DataSource = nhacungcap.getNhaCungCap();
+                        dataGridViewNCC.AllowUserToAddRows = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi", "Thêm nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi", "Thêm nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Thiếu giá trị", "Thêm nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
+             catch (SqlException ex)
             {
-                MessageBox.Show("Thiếu giá trị", "Thêm nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Lỗi SQL exception !\n" + ex.Message);
             }
+           
         }
         bool verif()
         {
@@ -70,7 +78,7 @@ namespace QLBH1.Nhacungcap
         private void QuanLyNhaCungCap_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'qLBH1DataSet.NhaCungCap' table. You can move, or remove it, as needed.
-            this.nhaCungCapTableAdapter.Fill(this.qLBH1DataSet.NhaCungCap);
+           // this.nhaCungCapTableAdapter.Fill(this.qLBH1DataSet.NhaCungCap);
             Nhacungcap nhacungcap = new Nhacungcap();
             //SqlCommand command = new SqlCommand("SELECT * FROM NhaCungCap");
 
@@ -80,16 +88,16 @@ namespace QLBH1.Nhacungcap
             dataGridViewNCC.DataSource = nhacungcap.getNhaCungCap();
             dataGridViewNCC.AllowUserToAddRows = false;
 
-            string mainconn = ConfigurationManager.ConnectionStrings["QLBH1.Properties.Settings.QLBH1ConnectionString"].ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(mainconn);
-            string sqlquery = "Select * from [dbo].[NhaCungCap]";
-            sqlconn.Open();
-            SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
-            SqlDataAdapter dr = new SqlDataAdapter(sqlcom);
-            DataTable dt = new DataTable();
-            dr.Fill(dt);
-            dataGridViewNCC.DataSource = dt;
-            sqlconn.Close();
+            //string mainconn = ConfigurationManager.ConnectionStrings["QLBH1.Properties.Settings.QLBH1ConnectionString"].ConnectionString;
+            //SqlConnection sqlconn = new SqlConnection(mainconn);
+            //string sqlquery = "Select * from [dbo].[NhaCungCap]";
+            //sqlconn.Open();
+            //SqlCommand sqlcom = new SqlCommand(sqlquery, sqlconn);
+            //SqlDataAdapter dr = new SqlDataAdapter(sqlcom);
+            //DataTable dt = new DataTable();
+            //dr.Fill(dt);
+            //dataGridViewNCC.DataSource = dt;
+            //sqlconn.Close();
         }
 
        
@@ -126,9 +134,9 @@ namespace QLBH1.Nhacungcap
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Chọn nhà cung cấp muốn xóa", "Xóa nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Xoá nhà cung cấp", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

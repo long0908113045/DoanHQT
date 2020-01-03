@@ -53,6 +53,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
     <Compile Include="HoaDon1\ChiTietObj.cs" />
     <Compile Include="HoaDon1\FormHoaDon.cs">
       <SubType>Form</SubType>
@@ -60,7 +61,6 @@
     <Compile Include="HoaDon1\FormHoaDon.Designer.cs">
       <DependentUpon>FormHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="HoaDon1\HoaDonMod.cs" />
     <Compile Include="HoaDon1\HoaDonObj.cs" />
     <Compile Include="Hoadon\DanhSachHoaDon.cs">
       <SubType>Form</SubType>
@@ -116,6 +116,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBH1DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyDonHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyDonHang.Designer.cs">
+      <DependentUpon>QuanLyDonHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sanpham\Loaisanpham.cs" />
     <Compile Include="Sanpham\QuanLyLoaiSanPham.cs">
       <SubType>Form</SubType>
@@ -163,6 +169,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuanLyDonHang.resx">
+      <DependentUpon>QuanLyDonHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sanpham\QuanLyLoaiSanPham.resx">
       <DependentUpon>QuanLyLoaiSanPham.cs</DependentUpon>
     </EmbeddedResource>

@@ -41,10 +41,6 @@
             this.buttonXoaKH = new System.Windows.Forms.Button();
             this.buttonCapNhatKH = new System.Windows.Forms.Button();
             this.dataGridViewKH = new System.Windows.Forms.DataGridView();
-            this.maKHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenKHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diaChiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sDTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.khachHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLBH1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLBH1DataSet = new QLBH1.QLBH1DataSet();
@@ -70,7 +66,7 @@
             // textBoxMaKH
             // 
             this.textBoxMaKH.Location = new System.Drawing.Point(215, 50);
-            this.textBoxMaKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxMaKH.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMaKH.Name = "textBoxMaKH";
             this.textBoxMaKH.Size = new System.Drawing.Size(163, 22);
             this.textBoxMaKH.TabIndex = 1;
@@ -78,7 +74,7 @@
             // textBoxTenKH
             // 
             this.textBoxTenKH.Location = new System.Drawing.Point(215, 108);
-            this.textBoxTenKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTenKH.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTenKH.Name = "textBoxTenKH";
             this.textBoxTenKH.Size = new System.Drawing.Size(163, 22);
             this.textBoxTenKH.TabIndex = 3;
@@ -96,7 +92,7 @@
             // textBoxDiaChi
             // 
             this.textBoxDiaChi.Location = new System.Drawing.Point(215, 162);
-            this.textBoxDiaChi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxDiaChi.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDiaChi.Multiline = true;
             this.textBoxDiaChi.Name = "textBoxDiaChi";
             this.textBoxDiaChi.Size = new System.Drawing.Size(163, 63);
@@ -115,7 +111,7 @@
             // textBoxSDT
             // 
             this.textBoxSDT.Location = new System.Drawing.Point(215, 252);
-            this.textBoxSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSDT.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSDT.Name = "textBoxSDT";
             this.textBoxSDT.Size = new System.Drawing.Size(163, 22);
             this.textBoxSDT.TabIndex = 7;
@@ -133,7 +129,7 @@
             // buttonThemKH
             // 
             this.buttonThemKH.Location = new System.Drawing.Point(215, 304);
-            this.buttonThemKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonThemKH.Margin = new System.Windows.Forms.Padding(4);
             this.buttonThemKH.Name = "buttonThemKH";
             this.buttonThemKH.Size = new System.Drawing.Size(167, 33);
             this.buttonThemKH.TabIndex = 8;
@@ -144,7 +140,7 @@
             // buttonXoaKH
             // 
             this.buttonXoaKH.Location = new System.Drawing.Point(689, 304);
-            this.buttonXoaKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXoaKH.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXoaKH.Name = "buttonXoaKH";
             this.buttonXoaKH.Size = new System.Drawing.Size(167, 33);
             this.buttonXoaKH.TabIndex = 9;
@@ -155,7 +151,7 @@
             // buttonCapNhatKH
             // 
             this.buttonCapNhatKH.Location = new System.Drawing.Point(448, 304);
-            this.buttonCapNhatKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCapNhatKH.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCapNhatKH.Name = "buttonCapNhatKH";
             this.buttonCapNhatKH.Size = new System.Drawing.Size(167, 33);
             this.buttonCapNhatKH.TabIndex = 10;
@@ -165,50 +161,15 @@
             // 
             // dataGridViewKH
             // 
-            this.dataGridViewKH.AutoGenerateColumns = false;
             this.dataGridViewKH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.maKHDataGridViewTextBoxColumn,
-            this.tenKHDataGridViewTextBoxColumn,
-            this.diaChiDataGridViewTextBoxColumn,
-            this.sDTDataGridViewTextBoxColumn});
-            this.dataGridViewKH.DataSource = this.khachHangBindingSource;
             this.dataGridViewKH.Location = new System.Drawing.Point(448, 89);
-            this.dataGridViewKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewKH.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewKH.Name = "dataGridViewKH";
             this.dataGridViewKH.RowHeadersWidth = 51;
             this.dataGridViewKH.Size = new System.Drawing.Size(603, 188);
             this.dataGridViewKH.TabIndex = 11;
             this.dataGridViewKH.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKH_RowEnter_1);
-            // 
-            // maKHDataGridViewTextBoxColumn
-            // 
-            this.maKHDataGridViewTextBoxColumn.DataPropertyName = "MaKH";
-            this.maKHDataGridViewTextBoxColumn.HeaderText = "MaKH";
-            this.maKHDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.maKHDataGridViewTextBoxColumn.Name = "maKHDataGridViewTextBoxColumn";
-            // 
-            // tenKHDataGridViewTextBoxColumn
-            // 
-            this.tenKHDataGridViewTextBoxColumn.DataPropertyName = "TenKH";
-            this.tenKHDataGridViewTextBoxColumn.HeaderText = "TenKH";
-            this.tenKHDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tenKHDataGridViewTextBoxColumn.Name = "tenKHDataGridViewTextBoxColumn";
-            // 
-            // diaChiDataGridViewTextBoxColumn
-            // 
-            this.diaChiDataGridViewTextBoxColumn.DataPropertyName = "DiaChi";
-            this.diaChiDataGridViewTextBoxColumn.HeaderText = "DiaChi";
-            this.diaChiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.diaChiDataGridViewTextBoxColumn.Name = "diaChiDataGridViewTextBoxColumn";
-            // 
-            // sDTDataGridViewTextBoxColumn
-            // 
-            this.sDTDataGridViewTextBoxColumn.DataPropertyName = "SDT";
-            this.sDTDataGridViewTextBoxColumn.HeaderText = "SDT";
-            this.sDTDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.sDTDataGridViewTextBoxColumn.Name = "sDTDataGridViewTextBoxColumn";
             // 
             // khachHangBindingSource
             // 
@@ -232,7 +193,7 @@
             // textBoxTimKH
             // 
             this.textBoxTimKH.Location = new System.Drawing.Point(689, 50);
-            this.textBoxTimKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTimKH.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTimKH.Name = "textBoxTimKH";
             this.textBoxTimKH.Size = new System.Drawing.Size(360, 22);
             this.textBoxTimKH.TabIndex = 12;
@@ -268,7 +229,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxMaKH);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "QuanLyKhachHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Khách Hàng";
@@ -300,10 +261,6 @@
         private QLBH1DataSet qLBH1DataSet;
         private System.Windows.Forms.BindingSource khachHangBindingSource;
         private QLBH1DataSetTableAdapters.KhachHangTableAdapter khachHangTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maKHDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenKHDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn diaChiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sDTDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox textBoxTimKH;
         private System.Windows.Forms.Label label5;
     }
